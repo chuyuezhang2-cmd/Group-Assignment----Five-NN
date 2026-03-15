@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1uCxUaBcuVnFqyVL6PTSyHwcGWVBRioq4
 """
 
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
@@ -39,6 +40,44 @@ test_df['Cabin'].fillna('Unknown', inplace=True)
 fare_median = train_df['Fare'].median()
 test_df['Fare'].fillna(fare_median, inplace=True)
 
+"""### 特征工程
+
+"""
+
+def extract_title(name: str) -> str:
+    parts = name.split(',')
+    if len(parts) < 2:
+        return 'Rare'
+    title_part = parts[1].split('.')[0].strip()
+    title_map = {
+        'Mlle': 'Miss',
+        'Ms': 'Miss',
+        'Mme': 'Mrs'
+    }
+    title_part = title_map.get(title_part, title_part)
+    if title_part in ['Mr', 'Mrs', 'Miss', 'Master']:
+        return title_part
+    return 'Rare'
+
+
+for df in [train_df, test_df]:
+    df['Title'] = df['Name'].apply(extract_title)
+    df['FamilySize'] = df['SibSp'] + df['Parch'] + 1
+    df['IsAlone'] = (df['FamilySize'] == 1).astype(int)
+    df['FamilySizeGroup'] = pd.cut(df['FamilySize'], bins=[0, 1, 4, 11], labels=['Solo', 'Small', 'Large'])
+    df['CabinDeck'] = df['Cabin'].str[0]
+    df['TicketGroupSize'] = df.groupby('Ticket')['Ticket'].transform('count')
+    df['HasCabin'] = (df['Cabin'] != 'Unknown').astype(int)
+    df['FarePerPerson'] = df['Fare'] / df['FamilySize']
+    df['LogFare'] = np.log1p(df['Fare'])
+    df['AgePclass'] = df['Age'] * df['Pclass']
+    df['IsChild'] = (df['Age'] < 16).astype(int)
+
+# 删除高基数或无意义列
+drop_cols = ['Name', 'Ticket', 'Cabin', 'PassengerId']
+train_df = train_df.drop(columns=drop_cols)
+test_df = test_df.drop(columns=drop_cols)
+
 # 检查后缺失值应为0
 print(train_df.isnull().sum())
 print(test_df.isnull().sum())
@@ -51,14 +90,15 @@ print(test_df.isnull().sum())
 encoder = OneHotEncoder(sparse_output=False, drop='first')
 
 # train
-encoded_train = encoder.fit_transform(train_df[['Sex', 'Embarked']])
-encoded_cols = encoder.get_feature_names_out(['Sex', 'Embarked'])
-train_df = pd.concat([train_df.drop(['Sex', 'Embarked'], axis=1),
+cat_cols = ['Sex', 'Embarked', 'Title', 'CabinDeck', 'FamilySizeGroup']
+encoded_train = encoder.fit_transform(train_df[cat_cols])
+encoded_cols = encoder.get_feature_names_out(cat_cols)
+train_df = pd.concat([train_df.drop(cat_cols, axis=1),
                       pd.DataFrame(encoded_train, columns=encoded_cols)], axis=1)
 
 # test（用train encoder）
-encoded_test = encoder.transform(test_df[['Sex', 'Embarked']])
-test_df = pd.concat([test_df.drop(['Sex', 'Embarked'], axis=1),
+encoded_test = encoder.transform(test_df[cat_cols])
+test_df = pd.concat([test_df.drop(cat_cols, axis=1),
                      pd.DataFrame(encoded_test, columns=encoded_cols)], axis=1)
 
 print(train_df.head())  # 检查新列：Sex_male, Embarked_Q, Embarked_S
@@ -68,7 +108,10 @@ print(train_df.head())  # 检查新列：Sex_male, Embarked_Q, Embarked_S
 scaler = StandardScaler()
 
 # data feature
-num_features = ['Age', 'Fare']
+num_features = [
+    'Age', 'Fare', 'SibSp', 'Parch', 'FamilySize', 'IsAlone', 'TicketGroupSize',
+    'HasCabin', 'FarePerPerson', 'LogFare', 'AgePclass', 'IsChild'
+]
 
 # train
 train_df[num_features] = scaler.fit_transform(train_df[num_features])
