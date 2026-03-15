@@ -9,11 +9,15 @@ Original file is located at
 
 import numpy as np
 import pandas as pd
+from pathlib import Path
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+ROOT_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = ROOT_DIR / "data"
+
 # 加载数据
-train_df = pd.read_csv('train.csv')
-test_df = pd.read_csv('test.csv')
+train_df = pd.read_csv(DATA_DIR / 'train.csv')
+test_df = pd.read_csv(DATA_DIR / 'test.csv')
 
 # 初始检查（复用EDA结果）
 print("训练集缺失值：")
@@ -122,5 +126,5 @@ test_df[num_features] = scaler.transform(test_df[num_features])
 print(train_df[num_features].describe())  # 均值≈0，方差≈1
 
 # save as CSV
-train_df.to_csv('preprocessed_train.csv', index=False)
-test_df.to_csv('preprocessed_test.csv', index=False)
+train_df.to_csv(DATA_DIR / 'preprocessed_train.csv', index=False)
+test_df.to_csv(DATA_DIR / 'preprocessed_test.csv', index=False)
