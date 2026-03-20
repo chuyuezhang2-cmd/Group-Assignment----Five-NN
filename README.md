@@ -33,21 +33,27 @@ These results significantly outperform typical baseline Titanic models (~78–80
 ```text
 titanic-survival-prediction/
 ├── data/
-│   ├── train.csv               # Kaggle training set (891 rows)
-│   └── test.csv                # Kaggle test set (418 rows)
+│   ├── train.csv
+│   ├── test.csv
+│   ├── preprocessed_train.csv
+│   └── preprocessed_test.csv
 ├── notebooks/
-│   ├── 1_EDA.ipynb                     # Exploratory analysis & visualizations
-│   ├── 2_Preprocessing.ipynb           # Missing values, encoding, feature engineering
-│   ├── 3_Modeling_Comparison.ipynb     # Multiple algorithms & hyperparameter tuning
-│   └── 4_Final_Model_Evaluation.ipynb  # Final model, error analysis, interpretation
+│   ├── 1_EDA.ipynb                    
+│   ├── 2_Preprocessing.ipynb          
+│   ├── 3_Modeling_Comparison.ipynb     
+│   └── 4_Final_Model_Evaluation.ipynb
+├── figures/
+│   ├── confusion_matrix.png                          
+│   └── feature_importance.png 
 ├── src/
-│   ├── data_preprocessing.py           # Reusable preprocessing functions
-│   └── modeling.py                     # Model training & evaluation utilities
+│   ├── data_preprocessing.py          
+│   ├── eda.py
+│   ├── ensemble_model.py          
+│   └── feature_engineering_ablation.py                   
 ├── models/
-│   └── final_logreg_model.pkl          # Trained final Logistic Regression model
-├── requirements.txt                    # Python dependencies
-├── README.md                           # This file
-└── report-draft.docx                   # Complete project report
+│   └── best_overall_model.pkl         
+├── README.md                    
+├── requirements.txt                                          
 
 ```
 
