@@ -49,6 +49,8 @@ titanic-survival-prediction/
 ├── README.md                           # This file
 └── report-draft.docx                   # Complete project report
 
+```
+
 ## Key Highlights
 
 - **Most important features**: Sex (female survival advantage), Pclass, Title, FamilySize, Age×Pclass interaction
@@ -59,16 +61,16 @@ titanic-survival-prediction/
 
 ## Technologies Used
 
-- Python 3.9+
+- Python 3.9.7
 - pandas, numpy
 - matplotlib, seaborn
 - scikit-learn (preprocessing, model selection, GridSearchCV)
-- Jupyter Notebook
+- Jupyter Notebook, Pycharm, VScode
 
 ## Full Project Report
 
 The detailed report (including problem definition, EDA figures, model comparison tables, limitations, and future work) is available in  
-[`report-draft.docx`](./report-draft.docx)
+relevant word.
 
 Feedback and questions are welcome!
 
