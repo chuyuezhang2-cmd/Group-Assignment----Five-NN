@@ -1,8 +1,8 @@
-# Titanic Survival Prediction  
-**Machine Learning for Business Course Project**
+# From Data Exploration to Survival Prediction: Machine Learning on Titanic Passenger Data  
 
+**Topic**: Machine Learning for Business
 **Group Name**: Five-NN  
-**Topic**: From Data Exploration to Survival Prediction: Machine Learning on Titanic Passenger Data
+ 
 
 ## Project Overview
 
