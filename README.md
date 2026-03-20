@@ -1,6 +1,7 @@
 # From Data Exploration to Survival Prediction: Machine Learning on Titanic Passenger Data  
 
-**Topic**: Machine Learning for Business
+**Course Name**: Machine Learning for Business
+
 **Group Name**: Five-NN  
  
 
