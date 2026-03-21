@@ -68,3 +68,114 @@ titanic-survival-prediction/
 ├── README.md
 ├── Group_Project_Report.pdf       # ← Full report (PDF)
 └── submission.csv                 # Ready for Kaggle upload
+```markdown
+## ⚙️ Setup and Installation (Reproducibility)
+
+### Prerequisites
+- Python 3.9.7 or higher
+- Git
+
+### Step-by-step
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/titanic-survival-prediction.git
+   cd titanic-survival-prediction
+   ```
+
+2. **Create virtual environment** (strongly recommended)
+   ```bash
+   python -m venv venv
+
+   # Windows
+   venv\Scripts\activate
+
+   # macOS / Linux
+   source venv/bin/activate
+   ```
+
+3. **Install all dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Data**  
+   `train.csv` and `test.csv` are already included in the `data/` folder — no download needed.
+
+---
+
+## ▶️ How to Run & Reproduce Results
+
+1. **Launch Jupyter Notebook**
+   ```bash
+   jupyter notebook
+   ```
+
+2. **Run notebooks in exact order** (recommended):
+   - `1_EDA.ipynb` → Data exploration
+   - `2_Preprocessing.ipynb` → Preprocessing + feature engineering
+   - `3_Modeling_Comparison.ipynb` → Hyperparameter tuning & model comparison
+   - `4_Final_Model_Evaluation.ipynb` → Final evaluation, error analysis & submission
+
+   **Alternative** (run scripts directly):
+   ```bash
+   python src/data_preprocessing.py
+   python src/feature_engineering_ablation.py
+   ```
+
+---
+
+## 🔄 Loading the Trained Model
+
+```python
+import pickle
+
+with open('models/best_overall_model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
+print("✅ Model loaded successfully!")
+```
+
+---
+
+## 📤 Generating Kaggle Submission
+
+The notebook `4_Final_Model_Evaluation.ipynb` automatically generates `submission.csv` in the root folder.  
+Just upload this file directly to the [Kaggle Titanic competition](https://www.kaggle.com/c/titanic).
+
+---
+
+## 📘 Full Project Report
+
+The complete **40-point group report** (including Team Information, Problem Statement, EDA, Preprocessing, Modeling, Evaluation, Limitations & References) is included as:
+
+**`Group_Project_Report.pdf`** (already placed in the repository root)
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python** 3.9.7
+- **Core**: pandas, numpy
+- **Visualization**: matplotlib, seaborn
+- **ML**: scikit-learn (GridSearchCV, pipelines), xgboost, lightgbm
+- **Environment**: Jupyter Notebook
+- **Others**: pickle, requirements.txt
+
+---
+
+## 💬 Feedback
+
+Questions, suggestions or issues? Feel free to open an issue or contact the team!
+
+**Submission Checklist** ✅
+- Folder name: `Group Assignment -- Five-NN`
+- GitHub repo is public
+- TA/Instructor can access all links
+
+---
+
+**Thank you for checking out our project!**  
+We hope this clean, fully reproducible repository helps you understand our Titanic survival prediction pipeline.  
+Good luck with grading! 🚀
+```
