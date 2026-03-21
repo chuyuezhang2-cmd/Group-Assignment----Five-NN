@@ -44,30 +44,29 @@ These results beat typical Titanic baselines (~78–80%) and clearly show the po
 
 ```text
 titanic-survival-prediction/
-├── data/                          # Raw & preprocessed CSV files
+├── data/                         
 │   ├── train.csv
 │   ├── test.csv
 │   ├── preprocessed_train.csv
 │   └── preprocessed_test.csv
-├── notebooks/                     # Step-by-step Jupyter workflows
+├── notebooks/                    
 │   ├── 1_EDA.ipynb
 │   ├── 2_Preprocessing.ipynb
 │   ├── 3_Modeling_Comparison.ipynb
 │   └── 4_Final_Model_Evaluation.ipynb
-├── figures/                       # Visualizations used in report
+├── figures/                      
 │   ├── confusion_matrix.png
 │   └── feature_importance.png
-├── src/                           # Reusable Python scripts
+├── src/                          
 │   ├── data_preprocessing.py
 │   ├── eda.py
 │   ├── ensemble_model.py
 │   └── feature_engineering_ablation.py
 ├── models/
-│   └── best_overall_model.pkl     # Trained Logistic Regression model
+│   └── best_overall_model.pkl    
 ├── requirements.txt
 ├── README.md
-├── Group_Project_Report.pdf       # ← Full report (PDF)
-└── submission.csv                 # Ready for Kaggle upload
+└── Group-Assignment----Five-NN.pdf                
 ```markdown
 ## ⚙️ Setup and Installation (Reproducibility)
 
@@ -149,7 +148,7 @@ Just upload this file directly to the [Kaggle Titanic competition](https://www.k
 
 The complete **40-point group report** (including Team Information, Problem Statement, EDA, Preprocessing, Modeling, Evaluation, Limitations & References) is included as:
 
-**`Group_Project_Report.pdf`** (already placed in the repository root)
+**`Group-Assignment----Five-NN.pdf`** (already placed in the repository root)
 
 ---
 
@@ -178,4 +177,3 @@ Questions, suggestions or issues? Feel free to open an issue or contact the team
 **Thank you for checking out our project!**  
 We hope this clean, fully reproducible repository helps you understand our Titanic survival prediction pipeline.  
 Good luck with grading! 🚀
-```
