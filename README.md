@@ -68,6 +68,9 @@ titanic-survival-prediction/
 ├── README.md
 └── Group-Assignment -- Five-NN.pdf                
 ```markdown
+
+---
+
 ## ⚙️ Setup and Installation (Reproducibility)
 
 ### Prerequisites
