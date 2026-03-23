@@ -167,12 +167,6 @@ The complete **40-point group report** (including Team Information, Problem Stat
 ## 💬 Feedback
 
 Questions, suggestions or issues? Feel free to open an issue or contact the team!
-
-**Submission Checklist** ✅
-- Folder name: `Group Assignment -- Five-NN`
-- GitHub repo is public
-- TA/Instructor can access all links
-
 ---
 
 **Thank you for checking out our project!**  
