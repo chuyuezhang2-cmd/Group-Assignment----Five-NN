@@ -66,7 +66,7 @@ titanic-survival-prediction/
 │   └── best_overall_model.pkl    
 ├── requirements.txt
 ├── README.md
-└── Group-Assignment----Five-NN.pdf                
+└── Group-Assignment -- Five-NN.pdf                
 ```markdown
 ## ⚙️ Setup and Installation (Reproducibility)
 
